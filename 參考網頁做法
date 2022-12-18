@@ -1,0 +1,44 @@
+wiki
+
+traceroute，現代Linux系統稱為tracepath，Windows系統稱為tracert，是一種電腦網路工具。它可顯示封包在IP網路經過的路由器的IP位址。
+
+ 
+
+sudo traceroute –q 1 –I 8.8.8.8
+Ref : Linux 中 TRACEROUTE 使用浅析
+
+-d：使用Socket层级的排错功能；
+-f<存活数值>：设置第一个检测数据包的存活数值TTL的大小；
+-F：设置勿离断位；
+-g<网关>：设置来源路由网关，最多可设置8个；
+-i<网络界面>：使用指定的网络界面送出数据包；
+-I：使用ICMP回应取代UDP资料信息；
+-m<存活数值>：设置检测数据包的最大存活数值TTL的大小；
+-n：直接使用IP地址而非主机名称；
+-p<通信端口>：设置UDP传输协议的通信端口；
+-r：忽略普通的Routing Table，直接将数据包送到远端主机上。
+-s<来源地址>：设置本地主机送出数据包的IP地址；
+-t<服务类型>：设置检测数据包的TOS数值；
+-v：详细显示指令的执行过程；
+-w<超时秒数>：设置等待远端主机回报的时间；
+-x：开启或关闭数据包的正确性检验。
+Question : 只有封包序號和 * 的回傳 在 VM Ubuntu 16 的環境 但在 Windows ，是可以知道 各個經過的 Router Gateway  原因 : ifconfig 為 虛擬 IP 192.168.x.x VM 預設的網路 為 NAT
+
+[問題解析] 
+
+[NAT 架構]  [Bridge 架構] 
+
+[解決方法]  在 Power Off 的情況下 ，Edit 網路設定  重啟 再下
+
+sudo traceroute -q 1 -I 8.8.8.8
+
+
+[其他] apt intall traceroute sol : Could not get lock/lib/dpkg/lock-fronted
+
+VM Bridge on Windows
+
+Windows 家用版	Windows 專業版
+使用 Wifi	使用 乙太網路
+如果家用版使用 乙太網路，VM 調 Bridge 會發生網路連不上的問題。 Ref : How to fix Connection Problem with Bridged Networking in VMware 與 影片中不一樣的是 我沒有把 Bridge 的 Configuration 的 勾選項目 關掉，我是全勾。
+
+ 
